@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Medbridge Referral Triage Mockup</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Embedded inside the GP referral workflow</p>
+          <h1>AI Medbridge: Referral Triage Assistant</h1>
+          <p class="subhead">
+            The GP writes a referral letter. AI Medbridge reads it in real time and recommends the
+            best clinical team or pathway.
+          </p>
+        </div>
+        <div class="hero-card">
+          <span class="chip">AI/ML powered</span>
+          <h2>Confidence score</h2>
+          <p class="score" id="confidenceScore">88%</p>
+          <p class="muted">Based on referral text + local pathway rules</p>
+        </div>
+      </header>
+
+      <section class="grid">
+        <article class="panel">
+          <div class="panel-header">
+            <h2>GP referral letter</h2>
+            <p class="muted">Drafted inside the GP system</p>
+          </div>
+          <textarea id="referralInput" rows="14">
+Patient: Maria Lewis, 42
+Reason for referral: Persistent right knee pain, worse when walking upstairs. Swelling after exercise.
+History: Mild osteoarthritis diagnosed 2 years ago. No recent injury. BMI 31.
+Current treatment: NSAIDs, physiotherapy referral pending.
+Request: Specialist assessment and management plan.
+          </textarea>
+          <div class="actions">
+            <button class="primary" id="analyzeBtn">Analyze referral</button>
+            <button class="ghost" id="loadSampleBtn">Load alternate sample</button>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <h2>AI Medbridge recommendations</h2>
+            <p class="muted">Suggested destinations ranked by fit</p>
+          </div>
+
+          <div class="recommendation" id="topRecommendation">
+            <div>
+              <p class="label">Primary suggestion</p>
+              <h3>MSK Physiotherapy Rapid Access</h3>
+              <p class="muted">Matches osteoarthritis + mobility limitation + BMI risk factors.</p>
+            </div>
+            <span class="badge">High match</span>
+          </div>
+
+          <div class="list" id="recommendationList">
+            <div class="list-item">
+              <div>
+                <h4>Orthopaedics (Knee)</h4>
+                <p class="muted">If pain persists after 6 weeks of physio + analgesia.</p>
+              </div>
+              <span>78%</span>
+            </div>
+            <div class="list-item">
+              <div>
+                <h4>Community Weight Management</h4>
+                <p class="muted">Support for BMI &gt; 30 + joint stress.</p>
+              </div>
+              <span>71%</span>
+            </div>
+            <div class="list-item">
+              <div>
+                <h4>Pain Management Clinic</h4>
+                <p class="muted">For chronic pain with limited response to NSAIDs.</p>
+              </div>
+              <span>64%</span>
+            </div>
+          </div>
+
+          <div class="insights">
+            <h3>AI insights</h3>
+            <ul>
+              <li>Detected conditions: osteoarthritis, chronic knee pain, obesity risk.</li>
+              <li>Urgency: routine (no red flags, no trauma).</li>
+              <li>Suggested tests: knee X-ray, updated physio assessment.</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel full">
+        <div class="panel-header">
+          <h2>Suggested action</h2>
+          <p class="muted">GP can accept, edit, or override before sending.</p>
+        </div>
+        <div class="action-grid">
+          <div>
+            <h3>Destination pathway</h3>
+            <p class="muted" id="destinationPathway">MSK Physiotherapy Rapid Access</p>
+          </div>
+          <div>
+            <h3>AI rationale</h3>
+            <p class="muted" id="aiRationale">
+              Referral mentions osteoarthritis with functional impairment. Local MSK pathway prioritizes
+              conservative care before orthopaedics.
+            </p>
+          </div>
+          <div>
+            <h3>Next steps</h3>
+            <ul class="muted">
+              <li>Attach recent physiotherapy notes.</li>
+              <li>Include BMI and mobility score.</li>
+              <li>Schedule follow-up in 6 weeks.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
