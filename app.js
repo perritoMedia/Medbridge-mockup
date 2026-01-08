@@ -6,6 +6,8 @@ const destinationPathway = document.getElementById("destinationPathway");
 const aiRationale = document.getElementById("aiRationale");
 const topRecommendation = document.getElementById("topRecommendation");
 const recommendationList = document.getElementById("recommendationList");
+const entityTags = document.getElementById("entityTags");
+const signalList = document.getElementById("signalList");
 
 const samples = [
   {
@@ -15,6 +17,12 @@ const samples = [
     pathway: "Cardiology Rapid Access Clinic",
     rationale:
       "Referral highlights exertional chest symptoms with family history, triggering cardiology pathway rule set.",
+    entityTags: ["Chest tightness", "Palpitations", "Family history", "Exertional symptoms"],
+    signals: [
+      { label: "Urgency", value: "Urgent review" },
+      { label: "Red flags", value: "Cardiac risk" },
+      { label: "Model confidence", value: "0.91" },
+    ],
     primary: {
       title: "Cardiology Rapid Access Clinic",
       detail: "Matches chest symptoms + palpitations + family history red flags.",
@@ -45,6 +53,12 @@ const samples = [
     pathway: "Memory Clinic & Cognitive Assessment",
     rationale:
       "Symptoms indicate progressive cognitive decline; aligns with memory clinic pathway for assessment.",
+    entityTags: ["Memory loss", "Disorientation", "Type 2 diabetes", "Hypertension"],
+    signals: [
+      { label: "Urgency", value: "Routine" },
+      { label: "Red flags", value: "None detected" },
+      { label: "Model confidence", value: "0.86" },
+    ],
     primary: {
       title: "Memory Clinic & Cognitive Assessment",
       detail: "Matches cognitive decline + age risk factors.",
@@ -85,6 +99,18 @@ function renderRecommendation(sample) {
     </div>
     <span class="badge">${sample.primary.badge}</span>
   `;
+
+  entityTags.innerHTML = sample.entityTags
+    .map((tag) => `<span class="tag">${tag}</span>`)
+    .join("");
+
+  signalList.innerHTML = sample.signals
+    .map(
+      (signal) => `
+        <li><span>${signal.label}</span><strong>${signal.value}</strong></li>
+      `
+    )
+    .join("");
 
   recommendationList.innerHTML = sample.list
     .map(

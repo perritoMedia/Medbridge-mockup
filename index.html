@@ -8,6 +8,46 @@
   </head>
   <body>
     <main class="page">
+      <header class="topbar">
+        <div class="brand">
+          <span class="logo-dot"></span>
+          <div>
+            <p class="brand-name">AI Medbridge</p>
+            <p class="brand-subtitle">Embedded referral intelligence</p>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#">Referral workspace</a>
+          <a href="#">Pathway library</a>
+          <a href="#">Audit log</a>
+        </nav>
+        <button class="primary">New referral</button>
+      </header>
+
+      <section class="workflow">
+        <div class="workflow-step active">
+          <span>1</span>
+          <div>
+            <h3>Draft referral</h3>
+            <p>GP writes a letter in the native EHR.</p>
+          </div>
+        </div>
+        <div class="workflow-step active">
+          <span>2</span>
+          <div>
+            <h3>AI reads + scores</h3>
+            <p>Model extracts signals and applies pathway rules.</p>
+          </div>
+        </div>
+        <div class="workflow-step">
+          <span>3</span>
+          <div>
+            <h3>Route patient</h3>
+            <p>GP accepts, edits, or overrides before sending.</p>
+          </div>
+        </div>
+      </section>
+
       <header class="hero">
         <div>
           <p class="eyebrow">Embedded inside the GP referral workflow</p>
@@ -57,6 +97,26 @@ Request: Specialist assessment and management plan.
               <p class="muted">Matches osteoarthritis + mobility limitation + BMI risk factors.</p>
             </div>
             <span class="badge">High match</span>
+          </div>
+
+          <div class="signals">
+            <div>
+              <p class="label">Entity highlights</p>
+              <div class="tag-list" id="entityTags">
+                <span class="tag">Osteoarthritis</span>
+                <span class="tag">Knee pain</span>
+                <span class="tag">BMI 31</span>
+                <span class="tag">Mobility limitation</span>
+              </div>
+            </div>
+            <div class="signal-card">
+              <p class="label">Routing signals</p>
+              <ul class="signal-list" id="signalList">
+                <li><span>Urgency</span><strong>Routine</strong></li>
+                <li><span>Red flags</span><strong>None detected</strong></li>
+                <li><span>Model confidence</span><strong>0.88</strong></li>
+              </ul>
+            </div>
           </div>
 
           <div class="list" id="recommendationList">
